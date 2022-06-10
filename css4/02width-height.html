@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>박스모델</title>
+	<style>
+		/* div 태그중 box1 class만 선택 */
+	div.box1{
+		width: 50px;
+		height: 50px;
+		background-color: yellow;
+		/* 둘 사이 거리를 띄우려면 margin을 넣어주면 됨 */
+		/* 컨텐츠 내부 여백은 padding을 씀 */
+		margin-bottom: 40px;
+		
+		/* 순서대로 top right bottom left (시계방향)
+		margin:10px 10px 10px 10px; */
+		/*  모든 margin값이 10px
+		margin :10px; */
+		/* margin 위아래는 10px 좌우는 15px
+		 margin 10px 15px;*/
+		 /* top 좌우 bottom 
+		 margin: 10px 15px 5px; */
+
+		 /* 아래에서 px은 선의 굵기 
+		  border: 2px red solid;*/
+	} 
+		div.box2{
+			width:50%;
+			height: 200px;
+			margin-top: 10px;
+			background-color: aqua;
+			
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+</body>
+
+</html>
