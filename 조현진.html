@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조현진페이지</title>
+    <style>
+        body {
+
+            margin: auto;
+        }
+
+
+
+        nav ul {
+            border: 1px solid gray;
+            padding: 1px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            height: 40px;
+            width: 150px;
+            padding-top: 10px;
+            padding-left: 6px;
+            margin: 5px 25px;
+
+
+
+        }
+
+
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: large;
+            text-align: center;
+            float: left;
+        }
+
+
+        #left {
+            margin-top: 100px;
+            margin-left: 90px;
+            width: 250px;
+            margin-bottom: -20px;
+            border-bottom: 1px solid gray;
+        }
+
+
+        #content {
+            width: 1300px;
+            margin-top: -330px;
+            border-bottom: 2px solid gray;
+        }
+
+
+
+
+
+        .menu {
+            width: 300px;
+            overflow: hidden;
+            float: left;
+            list-style-type: none;
+            padding-right: -10px;
+        }
+
+        .menu>li {
+            width: 50%;
+            border-bottom: 1px solid rgb(204, 201, 201);
+            ;
+            text-align: left;
+            line-height: 40px;
+            padding-top: 2px;
+            margin-top: 1px;
+
+
+        }
+
+        .menu a {
+            text-decoration: none;
+
+            color: black
+        }
+
+        .submenu>li {
+            line-height: 50px;
+
+        }
+
+        .submenu {
+            height: 0;
+            list-style: none;
+            overflow: hidden;
+
+        }
+
+        .menu>li:hover {
+            background-color: #ccd7ff;
+            transition-duration: 0.5s;
+        }
+
+        .menu>li:hover .submenu {
+            height: 50px;
+            transition-duration: 1s;
+        }
+
+        .submenu li a {
+            list-style-type: none;
+        }
+
+        #content {
+            float: left;
+            margin-top: -510px;
+            margin-left: 400px;
+
+        }
+
+        p {
+            margin-top: 110px;
+             margin-bottom: -10px;
+            font-weight: bold;
+        }
+
+
+        form {
+            display: inline;
+            margin-left: 980px;
+        }
+
+        table {
+            margin-left: 200px;
+            margin-top: 30px;
+         
+        }
+    </style>
+
+
+    <style type="text/css">
+        a:link {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+            <nav>
+                <ul>
+                    <li><a href="#">감염병</a></li>
+                    <li><a href="#">건강정보</a></li>
+                    <li><a href="#">정책정보</a></li>
+                    <li><a href="#">연구개발</a></li>
+                    <li><a href="#">알림·자료</a></li>
+                    <li><a href="#">간행물·통계</a></li>
+                    <li><a href="#">민원·정보공개</a></li>
+                    <li><a href="#">기관소개</a></li>
+                    <li><a href="#">사업별누리집</a></li>
+                </ul>
+            </nav>
+        </header>
+
+
+
+        <section id="left">
+            <h2 class="title">알림 · 자료</h2>
+
+
+            <body>
+                <ul class="menu">
+                    <li>
+                        <a href="#">이달의건강소식</a>
+                        <ul class="submenu">
+                            <li><a href="#">건강뉴스</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">보도자료</a>
+                        <ul class="submenu">
+                            <li><a href="#">자료배포</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">포토뉴스</a>
+                        <ul class="submenu">
+                            <li><a href="#">뉴스</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">홍보자료</a>
+                        <ul class="submenu">
+                            <li><a href="#">홍보사진</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">공지사항</a>
+                        <ul class="submenu">
+                            <li><a href="#">이벤트</a></li>
+
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">공고/공시</a>
+                        <ul class="submenu">
+                            <li><a href="#">공고입니다</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">채용공고</a>
+                        <ul class="submenu">
+                            <li><a href="#">채용합니다</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">법령·지침·서식</a>
+                        <ul class="submenu">
+                            <li><a href="#">기타</a></li>
+
+                        </ul>
+                    </li>
+
+
+
+        </section>
+        
+        <section id="mini">
+            <p>전체 3,320건, 현재 페이지 2/232</p>
+            <form>
+                <select>
+                    <option>제목</option>
+                    <option>내용</option>
+                    <option>아이디</option>
+                </select>
+            </form>
+            <input type="text" value="검색어를입력하세요">
+            <input type="button" value="검색">
+            </ul>
+</body>
+
+
+</section>
+<article>
+    <table>
+        <colgroup>
+            <col width="100px">
+            <col width="650px">
+            <col width="150px">
+            <col width="150px">
+
+        </colgroup>
+
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일자</th>
+                <th>조회수</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td align="center">3310</td>
+                <td> <a href="http://www.naver.com">건강정보개발</a></td>
+                <td align="center">만성질환예방과</td>
+                <td align="center">2021-12-28</td>
+                <td align="center">137</td>
+            </tr>
+            <tr>
+                <td align="center">3309</td>
+                <td> <a href="http://www.naver.com">국제공인예방접종지정기관</a></td>
+                <td align="center">질병관리청</td>
+                <td align="center">2021-12-23</td>
+                <td align="center">305</td>
+            </tr>
+            <tr>
+                <td align="center">3308</td>
+                <td> <a href="http://www.naver.com">2022년 환전외국환은행 선정결과 공고</a></td>
+                <td align="center">백신계약팀</td>
+                <td align="center">2021-12-23</td>
+                <td align="center">184</td>
+            </tr>
+            <tr>
+                <td align="center">3307</td>
+                <td> <a href="http://www.naver.com">2021년 질병관리청 정책연구용역(강원도 홍천군)</a></td>
+                <td align="center">운영지원과</td>
+                <td align="center">2021-12-20</td>
+                <td align="center">378</td>
+            </tr>
+            <tr>
+                <td align="center">3306</td>
+                <td> <a href="http://www.naver.com">2021년 질병관리청 정책연구용역(국민건강영양조사)</a></td>
+                <td align="center">운영지원과</td>
+                <td align="center">2021-12-27</td>
+                <td align="center">432</td>
+            </tr>
+            <tr>
+                <td align="center">3305</td>
+                <td> <a href="http://www.naver.com">2021년 질병관리청 건강영양조사분석과정책연구용역</a></td>
+                <td align="center">운영지원과</td>
+                <td align="center">2021-12-14</td>
+                <td align="center">770</td>
+            </tr>
+            <tr>
+                <td align="center">3304</td>
+                <td> <a href="http://www.naver.com">제1차 기후보건영향평가 공청회 개최 공고</a></td>
+                <td align="center">미래질병대비과</td>
+                <td align="center">2021-12-08</td>
+                <td align="center">438</td>
+            </tr>
+            <tr>
+                <td align="center">3303</td>
+                <td> <a href="http://www.naver.com">2021년 질병관리청 정책연구용역(인권 관점의 방역체계)</a></td>
+                <td align="center">운영지원과</td>
+                <td align="center">2021-12-07</td>
+                <td align="center">633</td>
+            </tr>
+            <tr>
+                <td align="center">3302</td>
+                <td> <a href="http://www.naver.com">2021년 질병관리청 만성질환 관리과 정책연구용역</a></td>
+                <td align="center">운영지원과</td>
+                <td align="center">2021-12-07</td>
+                <td align="center">583</td>
+            </tr>
+            <tr>
+                <td align="center">3301</td>
+                <td> <a href="http://www.naver.com">2021년 질병관리청 정책연구용역(404호,405호)</a></td>
+                <td align="center">운영지원과</td>
+                <td align="center">2021-12-06</td>
+                <td align="center">500</td>
+            </tr>
+
+        </tbody>
+    </table>
+</article>
+
+
+<section id="content">
+    <h2 class="title">공고/공시</h2>
+
+</section>
+
+
+
+<footer></footer>
+
+</div>
+</body>
+
+</html>
