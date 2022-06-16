@@ -17,8 +17,6 @@ console.log(minus('20','10'));  //문자열로 받았지만 숫자 타입으로 
 //배열의 요소들을 모두 더해 반환하는 함수
 function sumAry(ary){
     let sum=0;
-
-
     for (let i = 0; i < ary.length; i++) {
     sum += ary[i];
     }
