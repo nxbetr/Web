@@ -111,7 +111,7 @@ for(let i=1; i<vtd; i++){
 }
 for (let i = 1; i <= getLastDate(month); i++) {
     str += '<td>' + i + '</td>';
-    if ((vtd-1+i)%7 == 0){
+    if ((vtd-1+i)%7 == 0){  //7의 배수
         str += '</tr><tr>';
     }
 }

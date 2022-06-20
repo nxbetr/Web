@@ -69,17 +69,85 @@ console.log(regStr.replace(/good/g,' bad '));  //전체 바꾸기
 console.log(regStr.replace(/good/gi,' bad '));  //대소문자
 console.log(regStr.replace(/good\s/g,' bad ')); //공백 있는 것만 
 
-str1 = "good morning, good afternoon, good evening, and good night";
+
+const str1 = 'This is the only one story';
+console.log(str1.slice(8,11));
+console.log(str1.slice(-8,11));
+console.log(str1.slice(10,4));
+console.log(str1.slice(30));
+console.log(str1.slice(0,10));
+console.log(str1.slice(8,100));
+console.log(str1.slice());
+
+console.log(str.substring(8,11));
+console.log(str.substring(11,8));
+console.log(str.substring(11,-8));
+console.log(str.substring(10,4));
+console.log(str1.substring(30));
+console.log(str1.substring(0,-10));
+console.log(str1.substring(8,100));
+console.log(str1.substring());
+
+console.log(str1.substr(8,11));
+console.log(str1.substr(11,8));
+console.log(str1.substr(11,-8));
+console.log(str1.substr(-10,8));
+console.log(str1.substr(10));
+console.log(str1.substr(0,-10));
+console.log(str1.substr(8,100));
+console.log(str1.substr());
+
+const num1 = 123;
+const num2 = 123.45;
+const bool = true;
+const str = '문자열타입';
+const arr = [1,2,'a','b',3];
+const obj - {key: 'data', value:15};
+
+console.log(num1.toString());
+console.log(num2.toString());
+console.log(bool.toString());
+console.log(str.toString());
+console.log(arr.toString());
+console.log(obj.toString());
+console.log(obj.key.toString());
+console.log(obj.value.toString());
+
+const str1 = 'good morning, good afternoon, good evening, and good night';
+console.log(str1.indexOf('even'));
+console.log(str1.lastIndexOf('good'));
+console.log(str1.lastIndexOf('dawn'));
+
+const str1 = 'good morning, good afternoon, good evening, and good night';
 console.log(str1.indexOf('good',15));
-console.log(str1.charAt(3));
-console.log(str1.includes('nin'));
 
-str2 = "GOOD MORNING, GOOD AFTERNOON, good evening and good night"
-console.log(str2.replace(/good/i,'900d'))
+const str1 = 'good morning, good afternoon, good evening, and good night';
+console.log(str1.charAt(30));
+console.log(str1.charAt(100));
 
-str2 = 'this is the only method! 대소문자 변환 THE END'
-console.log(str2.toLowerCase());
-console.log(str2.toUpperCase());
+const str1 = 'good morning, good afternoon, good evening, and good night';
+console.log(str1.includes('even'));
+console.log(str1.includes('dawn'));
+
+const str1 = 'good morning, good afternoon, GOOD EVENING, AND GOOD NIGHT';
+console.log(str1.toLowerCase().indexOf('good'));
+console.log(str1.toUpperCase().indexOf('GOOD'));
+console.log(str1.search('GOOD'));
+console.log(str1.search(/GOOD/i));
+
+const str1 = "bad MORNING, GOOD AFTERNOON, good evening, and good night";
+console.log(str1.match(/good\s\w+gi));
+console.log(str1.match(/bad\s\w+gi));
+console.log(str1.match(/none\s\w+gi));
+console.log(str1.match('good'));
 
 
+const str1 = 'GOOD MORNING, GOOD AFTERNOON, good evening, and good night';
+console.log(str1.replace('good','bad'));
+console.log(str1.toLowerCase().replace('good','bad'));
+console.log(str1.replace(/good/i,'bad'));
+console.log(str1.replace(/good/gi,'bad'));
 
+var str1 = 'this is the only method! 대소문자 변환 THE END';
+console.log(str1.toLowerCase());
+console.log(str1.toUpperCase());
