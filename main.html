@@ -14,9 +14,74 @@
 
 <body>
     <!-- input 타입을 먼저 읽게 만들어줌 -->
-    <input type="file" id="selectFile" name="selectFile" accept="text/plain">
-    <script src="js/array_basic3.js"></script>  
+    <!-- <input type="file" id="selectFile" name="selectFile" accept="text/plain"> -->
 
+    <ul>
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Cherry</li>
+        </ul>
+
+        <div>
+            <h1>Cities</h1>
+            <ul>
+                <li id = "one" class="black">Newyork</li>
+                <li id = "two" class="white">Toronto</li>
+                <li id = "three" class="green">Seoul</li>
+                <li id = "four">Beijing</li>
+                
+            </ul>
+        </div>
+    
+    <!-- <script src="js/array_method.js"></script>   -->
+    <button id="add1">클릭</button>  
+    <button id="add2">클릭</button>  
+
+    <script>
+        /*  만들어진 DOM 요소를 가져와서 첫번째 요소의 값을 지움
+        let lis = document.getElementsByTagName('li');
+        console.log(lis);
+        lis[0].remove();
+        */
+       
+        let list = document.getElementsByTagName('li');  // list 라는 태그 모든걸 가져온다는 의미. HTML COllection
+        let detail = list[3];
+        //노드 종류 elemnet, attribute, text . DOM API (method(), 속성)
+        let attNode = detail.getAttribute('id');
+        let txtNode = detail.childNodes[0];
+       // console.log(detail, attNode, txtNode);
+      
+
+        // 버튼에 이벤트 적용
+        // 1.추가
+       let add1 = document.getElementById('add1')       
+       add1.addEventListener('click',function(){
+        let li = document.createElement('li');   // element node 생성
+       li.innerHTML = '대구';    
+       let ul = document.querySelector('div > ul')  //  > 는 자식요소 라는 의미
+        ul.appendChild(li);     // <ul><li>대구</li></ul>
+        console.log(add1)
+       })
+
+       //2. 삭제
+       let btns = document.querySelectorAll('button');  // NodeList
+       btns[1].addEventListener('click',function(){          // click 대신 mouseout, mouseover 등을 사용 할 수 있음
+       document.querySelector('div > ul > li').remove(); // 가지고 온 요소 중 제일 첫번째 요소부터 삭제
+       })
+       console.log(btns[1]);
+
+
+
+
+        // element node 생성
+       let li = document.createElement('li');   // element node 생성
+       li.innerHTML = '대구';    
+       let ul = document.querySelector('div > ul')  //  > 는 자식요소 라는 의미
+        ul.appendChild(li);     // <ul><li>대구</li></ul>
+       console.log(li)
+
+
+    </script>
 
 
     
