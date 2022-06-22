@@ -97,68 +97,29 @@
 
 
 
+    function makeTable2(){
+        let tb = document.createElement('table');
+        tb.setAttribute('border',"1")
 
-
-
-
-
-
-
-
-
-    // let tb = document.createElement('table')
-
-
-
-
-
-
-
-
-//         function makeTable(){
-//             let tb = document.createElement('table');
-//             let tr = document.createElement('tr');
-//             tb.appendChild(tr)
-//             students.forEach(elem => {
-//             let td = document.createElement('td');
-//             td.setAttribute('id', elem.sno);
-//             let txt = document.createTextNode(`${elem.sno}, ${elem.sname}`)
-//             td.appendChild(txt);
-//             tr.appendChild(td);
-//             });
-//             return tb;
-//         }
-//         // console.log(tb)
-//         // tb.appendChild(tr);
-//         // tb.appendChild(makeTable());
-//         document.write(makeTable())
-
-
-
-// show.appendChild(tb);   
-//         show.appendChild(makeTable());
-//         document.write(makeTable())
-
-
-
-
-
-
-
-        // function makeTable(){
-        //     let tb = document.createElement('table border="1"');
-        //         students.forEach(elem => {
-        //             let td = document.createElement('td');
-        //             td.setAttribute('id', elem.sno);
-        //             table.appendChild(td)
-        //             let txt = document.createTextNode(`${elem.sno}, ${elem.sname}`)     
-        //             td.appendChild(txt);
-        //              td.appendChild(li);
-        //                    });
-        //         return table;
-        // }
-        // show.appendChild(makeTable());  // 부모요소에 하위요소를 추가
-        
+        students.forEach(elem => {
+            let tr = document.createElement('tr');
+            tb.appendChild(tr)
+            
+            for( let field in elem){
+               // console.log(elem[field])
+               let td = document.createElement('td');               
+             //  td.setAttribute('id', elem.sno);
+               
+               let txt = document.createTextNode(elem[field])     
+                
+               td.appendChild(txt);
+               
+                tr.appendChild(td)
+            }
+        });
+        return tb;
+    }
+    show.appendChild(makeTable2());        
     </script>
 </body>
 

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom/member.html</title>
+    <style>
+        form {
+            border: 2px solid rgb(3, 0, 165);
+        }
+
+        form>label {
+            display: inline-block;
+            width: 25%;
+            background-color: rgb(200, 238, 255);
+        }
+
+        #memberName {
+            background-color: rgb(211, 231, 248);
+        }
+
+        input[name="phone"] {
+            background-color: rgb(176, 238, 217);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 회원번호, 회s원이름, 연락처, 생년월일 -->
+    <form action="../index.html" name="memberFrm">
+        <!-- <form action="../index.html" onsubmit="saveMember()"> -->
+        <label for="memberId">회원번호</label>
+        <input type="number" name="memberId" id="memberId"><br>
+        <!--number 타입이라 숫자만 입력가능 -->
+        <!-- //<input type="number" name="memberId" id="memberId" value="110011"><br>  밸류값 넣어주고 싶으면 이런식으로-->
+        <label for="memberId">회원이름</label>
+        <input type="text" name="memberName" id="memberName"><br>
+        <label for="memberId">연락처</label>
+        <input type="text" name="phone" id="phone"><br>
+        <label for="memberId">생년월일</label>
+        <input type="date" name="birth" id="birth"><br>
+        <input type="submit" value="추가">
+        <input type="button" value="수정">
+        <input type="reset" value="초기화">
+        <input type="button" value="선택삭제">
+
+        <!-- <input type="checkbox"> -->
+
+
+
+
+    </form>
+    <br>
+    <div id="show">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>회원번호</th>
+                    <th>회원이름</th>
+                    <th>연락처</th>
+                    <th>생년월일</th>
+                    <th>삭제</th>
+                    <th><input id="selectedCheck" type="checkbox"></th>
+                    <!-- <th>선택</th> -->
+
+                </tr>
+            </thead>
+            <tbody id="list">
+                <!-- <tr><td>1111</td><td>홍길동</td></tr> -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let data = [{ //db 정보
+            member_id: 111111,
+            member_name: "홍길동",
+            phone: '010-0212-2343',
+            birth: '2001-02-05'
+        }, {
+            member_id: 956431,
+            member_name: "저스틴",
+            phone: '010-1236-2453',
+            birth: '1932-11-25'
+        }, {
+            member_id: 674341,
+            member_name: "김자바",
+            phone: '010-7863-7853',
+            birth: '1864-06-07'
+        }];
+
+        function showList() {
+            // db에서 정보를 읽어온 후 반복 처리 ( tr>td*4, tr>td*4, tr>td*4)
+            let tbody = document.getElementById('list') // id 값이 list인 태그를 가져옴, tbody에 들어갈 내용
+            data.forEach(elem => { //여기서 elem은 아이디 이름 폰 생일 하나하나의 값
+                /*
+                 let tr = document.createElement('tr');  // tbody 아래에 tr이 와야함
+
+                 for (let field in elem){
+                     let td = document.createElement('td');   
+                     let txt = document.createTextNode(elem[field]);  // 괄호 안에 어떤 값이 들어올지 넣어줌
+                     td.appendChild(txt);
+                     tr.appendChild(td);
+
+                 }
+                 //삭제버튼 <td><button>삭제</button></td>
+                 let td = document.createElement('td');   
+                 let btn = document.createElement('button');  
+                 btn.textContent = '삭제';    //라벨을 붙여주기 위해
+                 td.appendChild(btn);
+                 tr.appendChild(td);   */
+                let tr = makeTr(elem); //위의 기능을 makeTr 함수에 추가해줌
+                tbody.appendChild(tr);
+            });
+        }
+        showList();
+
+
+        /* 위의 내용을 아래에서 만든 함수 makeTr을 이용해 간단하게 바꾼 버전
+        function showList(){
+            // db에서 정보를 읽어온 후 반복 처리 ( tr>td*4, tr>td*4, tr>td*4)
+            let tbody = document.getElementById('list')  // id 값이 list인 태그, tbody에 들어갈 내용
+            data.forEach(elem => {  //여기서 elem은 아이디 이름 폰 생일 하나하나의 값
+                let tr = makeTr(elem);
+                tbody.appendChild(tr);
+               
+            });
+        }
+        showList();
+            */
+
+
+        // 회원 하나를 주면 tr(row) 생성. tr 안에는 td가 들어가야함
+        // 매개값으로 들어온 하나가 tr과 td로 만들어짐
+        function makeTr(member = {}) { //매개값으로 object 타입의 member 를 줌
+            let tr = document.createElement('tr'); // tbody 아래에 tr이 와야함
+
+            // 아래에서 tr을 선택했을때 윗창의 칸에 데이터가 들어가게
+            tr.addEventListener('click', function () {
+                console.log('tr click'); // 여기서 this는 tr
+                document.getElementById('memberId').value = this.children[0].textContent;
+                document.getElementById('memberName').value = this.children[1].textContent;
+                document.getElementById('phone').value = this.children[2].textContent;
+                document.getElementById('birth').value = this.children[3].textContent;
+
+            }, false); // default 값으로 false. false는 버블링 방식)
+
+
+            for (let field in member) {
+                let td = document.createElement('td');
+                let txt = document.createTextNode(member[field]); // 괄호 안에 어떤 값이 들어올지 넣어줌
+                td.appendChild(txt);
+                tr.appendChild(td);
+
+            }
+            //삭제버튼 <td><button>삭제</button></td>
+            let td = document.createElement('td');
+            let btn = document.createElement('button'); // btn은 object, 기능 추가가 가능. btn : object{}
+            // btn.onclick = function(){} object에 이벤트 추가 법 
+
+
+
+            btn.addEventListener('click', function () { //추가법 2
+                console.log(this); // 여기서 this는 이벤트를 받는 대상 그자체 
+                this.parentElement.parentElement.remove(); // <tr><td><button> . this 기준 감싸고 있는 태그를 두번 가져와서 지움
+            });
+
+
+            /* 추가법 3 
+               btn.addEventListener('click',(e) => {
+                   console.log(e);
+                   e.target.parentElement.parentElement.remove();
+
+               })  */
+
+            btn.textContent = '삭제'; //라벨을 붙여주기 위해
+            td.appendChild(btn);
+            tr.appendChild(td);
+
+            // 체크 박스
+            td = document.createElement('td');
+            td.addEventListener('click', function () {
+                console.log('td click')
+
+            }, false)
+
+            let chk = document.createElement('input');
+            chk.setAttribute('type', 'checkbox');
+            chk.addEventListener('click', function (ev) {
+                console.log('checkbox click')
+                ev.stopPropagation(); // 이벤트 전파 중단
+
+                //uncheck 전체 건수와 체크 된 건수를 비교해서 같으면 전체선택, 아니면 해제
+                 let chked = document.querySelectorAll('#list > tr > td > input[type="checkbox"]:checked').length;
+                 let unChk = document.querySelectorAll('#list > tr > td > input[type="checkbox"]').length;
+                 document.querySelector('#selectedCheck').checked = chked == unChk ? true : false;
+
+
+            }, false)
+
+
+
+
+            // chk.addEventListener('click')
+            td.appendChild(chk);
+            tr.appendChild(td);
+
+            return tr;
+        }
+
+
+
+        // 폼 이름이 멤버 폼인 곳에 이벤트를 추가함
+        // submit 이벤트 발생 시 saveMember 함수 실행. 콜백함수
+        document.querySelector('form[name="memberFrm"').addEventListener('submit', saveMember);
+
+        //신규멤버 등록
+        function saveMember(evnt) { // 기본적으로 event가 콜백함수로 인해 매개값으로 사용돼서 event를 뜻하는 변수 evnt를 만들어서 써줌
+            evnt.preventDefault(); // 이벤트가 가진 기본 기능 차단
+            console.log(evnt);
+            console.log(document.forms); //  forms -> 다큐먼트가 가진 form 전체를 관리해줌
+            // form일 경우에만 다큐먼트 안에 있는 form을 관리
+            let mId = document.forms.memberFrm.memberId.value; // <input name="memberId"> input태그에 memberId 밸류 속성을 가져옴
+            // let mId = document.forms['memberFrm']['memberId'].value;     이렇게 적어도 됨
+            // let mId = document.forms[0]['memberId'].value;     object 타입이라 인덱스 값으로 불러와도 됨
+            let mName = document.forms.memberFrm.memberName.value; // object 모델로 .연산자를 통해 가져옴
+            let mPhone = document.forms.memberFrm.phone.value;
+            let mBirth = document.forms.memberFrm.birth.value;
+
+            // 공란을 만났을때
+            if (mId == '' || mName == '' || mPhone == '' || mBirth == '') {
+                alert('항목 입력을 완료하세요!');
+                return; // return을 만나면 밑 코드가 실행 안되고 함수가 종료된다
+            }
+
+            // 이미 존재하는 아이디가 있는지 중복 체크
+            let ids = document.querySelectorAll('#list > tr > td:nth-child(1)') //list(tbody)밑에 있는 tr 밑에 있는 td 밑에 있는 첫번째
+            console.log(ids);
+            let exists = false;
+            for (let id of ids) {
+                if (id.textContent == mId) { // 여기서 id는 td 태그
+                    exists = true;
+                    break;
+                }
+            }
+            if (exists) { //exists 값이 true 라면
+                alert('이미 존재하는 아이디입니다.')
+                return;
+            }
+
+
+
+
+
+
+            let member = {
+                member_id: mId,
+                member_name: mName,
+                phone: mPhone,
+                birth: mBirth
+            }; // 위에 것들을 object안에 담아줌
+
+            // let tr = document.createElement('tr');
+            // for (let field in member) {
+            //     let td = document.createElement('td');
+            //     let txt = document.createTextNode(member[field]);
+            //     td.appendChild(txt);
+            //     tr.appendChild(td);
+            // }
+
+            let tbody = document.getElementById('list');
+            tbody.appendChild(makeTr(member));
+            //tbody.appendChild(tr); 위의 주석처리를 풀면 얘도 풀어주고 윗줄tbody.app~는 다시 주석처리
+
+            // 저장 버튼이 실행되면 입력 돼 있는 값을 초기화
+            document.forms['memberFrm']['memberId'].value = '';
+            document.forms.memberFrm.memberName.value = null;
+            document.forms.memberFrm.phone.value = '';
+            document.forms.memberFrm.birth.value = '2000-01-01'; // 초기값을 2000-01-01로 설정해줌
+            document.forms['memberFrm']['memberId'].focus(); // focus : 특정 위치에 커서가 깜빡이게 설정
+
+        }
+
+        // 수정버튼 클릭 .  윗창에서 바꾼 값을 입력 후 수정 버튼을 클릭했을때 아래에서 수정되게
+        document.querySelector('input[type="button"]').addEventListener('click', changeMember);
+
+        // 수정 콜백
+        function changeMember() {
+            console.log(this)
+            let mId = document.forms.memberFrm.memberId.value; // 찾을 id
+            let mName = document.forms.memberFrm.memberName.value; // memberFrm이 가진 memberName을 찾아옴
+            let mPhone = document.forms.memberFrm.phone.value;
+            let mbirth = document.forms.memberFrm.birth.value;
+
+            let trAry = document.querySelectorAll('#list > tr');
+            console.log(trAry)
+            for (let i = 0; i < trAry.length; i++) {
+                if (mId == trAry[i].children[0].textContent) {
+                    trAry[i].children[1].textContent = mName; // 이름만
+                    trAry[i].children[2].textContent = mPhone;
+                    trAry[i].children[3].textContent = mbirth;
+
+
+                    break; // 위의 조건에 만족하는 값을 찾으면 멈춤 
+                }
+            }
+        }
+
+        //선택삭제
+        // tr을 가져와서 6 번째 td 태그의 자식 태그인 input 태그에 클릭 이벤트를 만듦
+        document.querySelector('input[value="선택삭제"]').addEventListener('click', deleteChecked);
+
+        function deleteChecked() {
+            let checkTr = document.querySelectorAll('#list > tr'); // tbody 아래에 있는 tr을 다 가져옴
+
+            checkTr.forEach(tr => { // 변수 tr (아무이름 가넝한)
+                //   console.log(tr.children[5].children[0].checked);  children[5]=체크박스, children[0]=input
+                if (tr.children[5].children[0].checked) { // 체크 된 tr만 지움 
+                    tr.remove();
+                }
+            });
+        }
+
+        // 전체선택 or 전체해제
+        document.getElementById('selectedCheck').addEventListener('change', checkAll);
+
+        function checkAll() {
+            let chkAll = document.querySelectorAll('#list > tr> td > input[type="checkbox"');
+            //console.log(chkAll)
+
+            chkAll.forEach(elem => {
+                elem.checked = this.checked;
+                console.log(this.checked)
+            });
+
+        }
+
+
+        function saveFnc() {
+            event
+                .preventDefault(); // form을 전송하는 객체가 발생하면 event 객체. 해당 event object의 전송기능을(페이지 전환) 차단하는게 preventDefault();
+            console.log('saveFnc call');
+
+            let mi = document.getElementById('memberId').value;
+            let mn = document.querySelector('#memberName').value; // id 값으로 가져옴
+            let ph = document.getElementsByTagName('input')[2]
+                .value; // id 값이 없을때 input 태그의 두번째 value 가져옴, form>input:nth-of-type(2)라 적으면 input이라는 같은 태그만 계산해서 가져옴
+            let bt = document.querySelector('form>input:nth-child(11)')
+                .value; //선택자. home 아래 라벨태그 br태그 포함 몇번째 인풋 태그인지(11) 적어줌
+            console.log(`id: ${mi}, name: ${mn}, phone: ${ph}, birth: ${bt}`)
+
+
+            /*   
+           dom => <table><tr><td>mi</td><td>mn</td>... </tr></table>
+
+            let tb = document.createElement('table');
+            tb.setAttribute('border','1')
+            let tr = document.createElement('tr');
+            let td = document.createElement('td');
+            let txt = document.createTextNode(mi);  // 110011
+            td.appendChild(txt);    //<td>110011</td>
+            tr.appendChild(td);      //<tr><td>110011</td></tr>
+            tb.appendChild(tr);      //<table><tr><td>110011</td></tr></table>
+
+            document.body.appendChild(tb); // body 태그     */
+
+
+            // 위의 태그를 배열에 담아서 한번에 정보 출력하기
+            let fields = [mi, mn, ph, bt]; //배열에 담기
+            let tb = document.createElement('table');
+            tb.setAttribute('border', '1')
+            let tr = document.createElement('tr');
+
+
+            for (let field of fields) {
+                let td = document.createElement('td');
+                let txt = document.createTextNode(field); // 110011
+                td.appendChild(txt); //<td>110011</td>
+                tr.appendChild(td); //<tr><td>110011</td></tr>
+                tb.appendChild(tr); //<table><tr><td>110011</td></tr></table>
+            }
+
+            document.body.appendChild(tb); // body 태그
+        }
+    </script>
+</body>
+
+</html>
